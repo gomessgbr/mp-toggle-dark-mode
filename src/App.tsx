@@ -16,16 +16,19 @@ function App() {
     };
   }, []);
 
-  const handleDarkMode = (event: React.ChangeEvent<HTMLInputElement>) => {
+  // const clickSound = new Audio("./sounds/mixkit-message-pop-alert-2354.mp3");
+  // const clickSound2 = new Audio("./sounds/mixkit-arrow-whoosh-1491.wav");
+  const handleDarkMode = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = event.target.checked;
     if (isChecked) {
       localStorage.setItem("theme", "light");
       document.documentElement.classList.remove("dark");
+      // await clickSound.play();
       return;
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
     }
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+    // await clickSound2.play();
   };
   return (
     <div className="min-h-dvh w-screen grid place-content-center">
