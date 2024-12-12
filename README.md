@@ -1,29 +1,50 @@
-# [💻 Toggle de Dark Mode Animado com Tailwind CSS](https://codante.io/mini-projetos/toggle-dark-mode-animado)
+# React + TypeScript + Vite
 
-Você descobriu que a luz azul emitida pelo monitor pode atrapalhar o sono das pessoas. Com você se preocupa com o bem-estar das pessoas que usam seu app, você decidiu implementar um switch entre dark mode e light mode na sua aplicação. Sua sorte é que você estava usando TailwindCSS, então seu trabalho vai ser muito mais prazeroso.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Neste mini projeto, você terá a oportunidade de explorar os recursos do Tailwind CSS para implementar um toggle de dark mode elegante e interativo.
+Currently, two official plugins are available:
 
-## 🔨 Requisitos
-- Implemente um Toggle de Dark Mode que permita aos usuários alternar entre os modos claro e escuro da interface.
-- Utilize as classes do Tailwind CSS para estilizar o Toggle e os elementos relacionados.
-- Adicione animações e transições para fornecer uma experiência agradável ao alternar entre os modos.
-- Adicione um som ao clicar no toggle.
-- Use a criatividade para construir uma experiência única. Temos uma sugestão de design disponível, mas esse é um mini-projeto que vale a pena deixar a criatividade fluir!
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## 🔍 Dicas
-- Verifique a documentação do Tailwind sobre como implementar o dark mode.
-- Garanta que sua aplicação não "pisque" ao recarregar a página. Um problema comum ao implementar o dark mode é que quando o padrão é o modo claro, mas a pessoa salvou a preferência do modo escuro, a aplicação "pisca" ao transicionar do modo claro para o modo escuro. 
+## Expanding the ESLint configuration
 
-## 🎨 Inspiração de Design
-[🔗 Link para o Figma com o Design Sugerido](https://www.figma.com/file/suvmja6210ggZOO6Cpehjl/Mini-Projetos---Codante.io?type=design&node-id=563-2&t=Nf5bd9PYvgPCxd4X-0)
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
+- Configure the top-level `parserOptions` property like this:
 
-![image](https://github.com/codante-io/mp-toggle-dark-mode/assets/6475893/4ebb6756-f98d-4e14-826a-80a6a86205b2)
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-## 💡 Inspiração
-Confira estes exemplos para se inspirar na implementação do Toggle de Dark Mode:
-  - [Site do Josh Comeau](https://www.joshwcomeau.com/)
-  - [Site do Codante](https://codante.io)
-  - [O toggle mais satisfatório do mundo](https://svarden.se/post/the-worlds-most-satisfying-toggle?utm_source=stefanjudis)
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
+
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
+```
