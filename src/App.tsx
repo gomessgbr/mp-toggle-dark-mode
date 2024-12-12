@@ -3,11 +3,17 @@ import { useEffect } from "react";
 function App() {
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
+    console.log("teste", savedTheme);
     if (savedTheme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
+
+    return () => {
+      localStorage.setItem("theme", "dark");
+      document.documentElement.classList.add("dark");
+    };
   }, []);
 
   const handleDarkMode = (event: React.ChangeEvent<HTMLInputElement>) => {
