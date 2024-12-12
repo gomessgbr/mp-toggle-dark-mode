@@ -30,13 +30,14 @@ function App() {
           onChange={handleDarkMode}
         />
         <div
-          className="peer after:animate-moon after:transition-all after:bg-[length:24px_24px]
+          className="peer  after:transition-all after:bg-[length:24px_24px]
         after:bg-no-repeat after:bg-[url('./assets/moon.svg')]
         after:bg-center duration-500 after:left-0 peer-checked:after:bg-[url('./assets/sun.svg')] 
         peer-checked:after:left-12 absolute flex w-24 h-12 dark:bg-zinc-700 bg-zinc-200 rounded-full 
         px-1 items-center after:rounded-full after:content-['']
         after:flex after:h-10 after:w-10 after:relative dark:after:bg-zinc-800
-        after:bg-zinc-300 after:rotate-0 peer-checked:after:rotate-180 shadow-inner "
+        after:bg-zinc-300 after:rotate-0 peer-checked:after:rotate-180 
+        shadow-inner after:animate-moon peer-checked:after:animate-sun"
         ></div>
       </label>
     </div>
